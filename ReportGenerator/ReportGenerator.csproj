@@ -12,8 +12,4 @@
     <PackageReference Include="TinyCsvParser" Version="2.6.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>
