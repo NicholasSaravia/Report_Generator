@@ -1,15 +1,16 @@
-﻿.layout{
+﻿.report-layout {
     display: grid;
     grid-template-rows: 40px 1fr 1fr;
     grid-gap: 20px;
 }
-.layout__upload {
+
+.report-layout__upload {
     display: flex;
     justify-content: center;
 }
 
-.layout__classes {
-    display:grid;
+.report-layout__classes {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     grid-gap: 20px;
 }

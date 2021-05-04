@@ -1,36 +1,23 @@
 ﻿
-<InputFile id="fileInput" OnChange="UploadFiles" hidden multiple />
+<InputFile id="fileInput" OnChange="Submit" hidden multiple />
 
 <MudButton HtmlTag="label"
            Variant="Variant.Filled"
            Color="Color.Primary"
            StartIcon="@Icons.Filled.CloudUpload"
            for="fileInput"
-           >
+>
     @UploadText
 </MudButton>
 
 
 @code
 {
-    [Parameter]
-    public string UploadUrl { get; set; }
 
     [Parameter]
     public string UploadText { get; set; }
 
-
-    IList<IBrowserFile> files = new List<IBrowserFile>();
-    private void UploadFiles(InputFileChangeEventArgs e)
-    {
-        foreach (var file in e.GetMultipleFiles())
-        {
-            files.Add(file);
-        }
-    }
-
-    private void Submit()
-    {
-    }
-
+    [Parameter]
+    public Action<InputFileChangeEventArgs> Submit { get; set; }
 }
+

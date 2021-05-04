@@ -1,13 +1,14 @@
 ﻿@page "/"
 
-<section class="layout">
-    <section class="layout__upload">
-        <Upload UploadText="Upload Files"></Upload>
+<section class="report-layout">
+    <section class="report-layout__upload">
+        <Upload UploadText="Upload Files" Submit="UploadFiles"></Upload>
     </section>
-    <section class="layout__classes">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+    <section class="report-layout__classes">
+        @foreach (var file in files)
+        {
+            <Card>@file.Name</Card>
+        }
     </section>
-    <section class="layout__stats"></section>
+    <section class="report-layout__stats"></section>
 </section>
