@@ -2,3 +2,13 @@
     display: grid;
     grid-template-rows: 40px 1fr 1fr;
 }
+.layout__upload {
+    display: flex;
+    justify-content: center;
+}
+
+.layout__classes {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
