@@ -2,12 +2,12 @@
 
 <section class="report-layout">
     <section class="report-layout__upload">
-        <Upload UploadText="Upload Files" Submit="UploadFiles"></Upload>
+        <Upload UploadText="Upload Files" Submit="ParseData"></Upload>
     </section>
     <section class="report-layout__classes">
-        @foreach (var file in files)
+        @foreach (var classRoom in classRooms)
         {
-            <Card>@file.Name</Card>
+            <Card Title="@classRoom.Name"></Card>
         }
     </section>
     <section class="report-layout__stats"></section>

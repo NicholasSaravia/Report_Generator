@@ -13,11 +13,11 @@
 
 @code
 {
-
     [Parameter]
     public string UploadText { get; set; }
+}
 
+@functions{
     [Parameter]
     public Action<InputFileChangeEventArgs> Submit { get; set; }
 }
-
