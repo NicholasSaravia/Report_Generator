@@ -10,57 +10,35 @@
         {
             <Card Title="@classRoom.Name" Class="thick-border-inverse">
                 <div class="sub-header">@classRoom.Name scored an average of <span class="c-mp">@classRoom.ClassAverage</span></div>
+
                 <div class="grid gap-10">
                     <div>A.</div>
                     <div>
                         @classRoom.StudentsUsedToCalculateReport/@classRoom.StudentsWithinClass students where used to calculate this report
                     </div>
                 </div>
-               
+
+                <Gauge Value="@classRoom.ClassAverage"></Gauge>
+                
                 <div>
-                    <RadzenRadialGauge Style="width: 100%; height: 300px;">
-                        <RadzenRadialGaugeScale StartAngle="-150" EndAngle="150" Step="20" Min="0" Max="100" TickPosition="@tickPosition">
-                            <RadzenRadialGaugeScalePointer Value="@classRoom.ClassAverage" Length="0.6">
-                                <Template Context="pointer">
-                                    <h4 class="c-mp">
-                                        @pointer.Value
-                                    </h4>
-                                </Template>
-                            </RadzenRadialGaugeScalePointer>
-                            <RadzenRadialGaugeScaleRange From="0" To="33" Fill="red" />
-                            <RadzenRadialGaugeScaleRange From="34" To="66" Fill="orange" />
-                            <RadzenRadialGaugeScaleRange From="67" To="100" Fill="green" />
-                        </RadzenRadialGaugeScale>
-                    </RadzenRadialGauge>
+                    @if (classRoom.NameOfStudentsNotUsedOnTest.Any())
+                    {
+                        <div class="grid gap-10">
+                            <div>B.</div>
+                            <div>
+                                Students discarded from consideration
+                            </div>
+                        </div>
+                        <ol class="ml-38">
+                            @foreach (var student in classRoom.NameOfStudentsNotUsedOnTest)
+                            {
+                                <li>@student</li>
+                            }
+                        </ol>
+                    }
                 </div>
-
-                @if (classRoom.NameOfStudentsNotUsedOnTest.Any())
-                {
-                    <div class="grid gap-10">
-                        <div>B.</div>
-                        <div>
-                            Students discarded from consideration
-                        </div> 
-                    </div>
-                    <ol class="ml-38">
-                        @foreach (var student in classRoom.NameOfStudentsNotUsedOnTest)
-                        {
-                            <li>@student</li>
-                        }
-                    </ol>
-                }
-
-
-
             </Card>
         }
     </section>
     <section class="report-layout__stats"></section>
 </section>
-
-@code{
-
-    GaugeTickPosition tickPosition = GaugeTickPosition.Inside;
-
-
-}

@@ -1,0 +1,22 @@
+﻿<RadzenRadialGauge Style="width: 100%; height: 300px;">
+    <RadzenRadialGaugeScale StartAngle="-150" EndAngle="150" Step="20" Min="0" Max="100" TickPosition="@TickPosition">
+        <RadzenRadialGaugeScalePointer Value="@Value" Length="0.6">
+            <Template Context="pointer">
+                <h4 class="c-mp">
+                    @pointer.Value
+                </h4>
+            </Template>
+        </RadzenRadialGaugeScalePointer>
+        <RadzenRadialGaugeScaleRange From="0" To="33" Fill="red" />
+        <RadzenRadialGaugeScaleRange From="34" To="66" Fill="orange" />
+        <RadzenRadialGaugeScaleRange From="67" To="100" Fill="green" />
+    </RadzenRadialGaugeScale>
+</RadzenRadialGauge>
+
+@code {
+    [Parameter]
+    public double Value { get; set; }
+
+    GaugeTickPosition TickPosition = GaugeTickPosition.Inside;
+
+}
