@@ -1,0 +1,28 @@
+﻿
+
+.ml-38 {
+    margin-left:38px;
+}
+
+.c-mp {
+    color: mediumpurple;
+}
+
+.grid {
+    display:flex;
+}
+.gap-10 {
+    grid-gap: 10px;
+}
+.flex-h-center {
+    display: flex;
+    justify-content: center;
+}
+
+.thick-border {
+    border: 14px solid;
+}
+
+    .thick-border-inverse {
+        border: 14px solid rgba(0,0,0,.03);
+    }

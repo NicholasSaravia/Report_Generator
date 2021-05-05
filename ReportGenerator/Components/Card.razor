@@ -1,4 +1,4 @@
-﻿<div class="card">
+﻿<div class="card @Class">
     <section class="card__header">
         @Title
     </section>
@@ -13,4 +13,7 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Class { get; set; } 
 }

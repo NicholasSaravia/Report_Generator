@@ -8,30 +8,41 @@
     <section class="report-layout__classes">
         @foreach (var classRoom in classRooms.OrderByDescending(x => x.ClassAverage))
         {
-            <Card Title="@classRoom.Name">
-                <div>@classRoom.Name scored an average of @classRoom.ClassAverage</div>
-                <div>A. @classRoom.StudentsUsedToCalculateReport/@classRoom.StudentsWithinClass students where used to calculate this report</div>
+            <Card Title="@classRoom.Name" Class="thick-border-inverse">
+                <div class="sub-header">@classRoom.Name scored an average of <span class="c-mp">@classRoom.ClassAverage</span></div>
+                <div class="grid gap-10">
+                    <div>A.</div>
+                    <div>
+                        @classRoom.StudentsUsedToCalculateReport/@classRoom.StudentsWithinClass students where used to calculate this report
+                    </div>
+                </div>
+               
                 <div>
                     <RadzenRadialGauge Style="width: 100%; height: 300px;">
                         <RadzenRadialGaugeScale StartAngle="-150" EndAngle="150" Step="20" Min="0" Max="100" TickPosition="@tickPosition">
                             <RadzenRadialGaugeScalePointer Value="@classRoom.ClassAverage" Length="0.6">
                                 <Template Context="pointer">
-                                    <h4>
-                                        @pointer.Value <sup>km/h</sup>
+                                    <h4 class="c-mp">
+                                        @pointer.Value
                                     </h4>
                                 </Template>
                             </RadzenRadialGaugeScalePointer>
-                            <RadzenRadialGaugeScaleRange From="0" To="33" Fill="red"/>
-                            <RadzenRadialGaugeScaleRange From="34" To="66" Fill="orange"/>
-                            <RadzenRadialGaugeScaleRange From="67" To="100" Fill="green"/>
+                            <RadzenRadialGaugeScaleRange From="0" To="33" Fill="red" />
+                            <RadzenRadialGaugeScaleRange From="34" To="66" Fill="orange" />
+                            <RadzenRadialGaugeScaleRange From="67" To="100" Fill="green" />
                         </RadzenRadialGaugeScale>
                     </RadzenRadialGauge>
                 </div>
-                
+
                 @if (classRoom.NameOfStudentsNotUsedOnTest.Any())
                 {
-                    <div>B. Students discarded from consideration</div>
-                    <ol>
+                    <div class="grid gap-10">
+                        <div>B.</div>
+                        <div>
+                            Students discarded from consideration
+                        </div> 
+                    </div>
+                    <ol class="ml-38">
                         @foreach (var student in classRoom.NameOfStudentsNotUsedOnTest)
                         {
                             <li>@student</li>
@@ -41,7 +52,6 @@
 
 
 
-                <div></div>
             </Card>
         }
     </section>
@@ -50,7 +60,7 @@
 
 @code{
 
-    IEnumerable<GaugeTickPosition> tickPositions = Enum.GetValues(typeof(GaugeTickPosition)).Cast<GaugeTickPosition>();
     GaugeTickPosition tickPosition = GaugeTickPosition.Inside;
+
 
 }
