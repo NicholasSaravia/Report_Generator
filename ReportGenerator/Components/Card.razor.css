@@ -1,7 +1,8 @@
 ﻿.card {
     background: #fff;
     border-radius: 2px;
-    display: flex;
+    display: grid;
+    grid-template-rows: 40px 1fr;
     height: 550px;
     width: 400px;
     margin: auto;
@@ -12,3 +13,8 @@
     .card:hover {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
+.card__header {
+    font-size: 20px;
+    font-weight: bold;
+}

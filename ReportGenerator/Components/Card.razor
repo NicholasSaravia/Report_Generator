@@ -3,14 +3,14 @@
         @Title
     </section>
     <section class="card__body">
-
-    </section>
-    <section class="card__footer">
-
+        @ChildContent
     </section>
 </div>
 
 @code {
     [Parameter]
     public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
 }
