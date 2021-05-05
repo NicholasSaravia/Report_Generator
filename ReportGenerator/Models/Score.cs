@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ReportGenerator.Helpers;
 using TinyCsvParser.Mapping;
 
 namespace ReportGenerator.Models
@@ -21,9 +22,9 @@ namespace ReportGenerator.Models
         public bool GradeUsable => GradeRounded != 0;
     }
 
-    public class CsvReportGradeMapping : CsvMapping<Score>
+    public class ScoreMapping : CsvMapping<Score>
     {
-        public CsvReportGradeMapping()
+        public ScoreMapping()
             : base()
         {
             MapProperty(0, x => x.StudentName);
