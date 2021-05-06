@@ -1,5 +1,5 @@
 ﻿
-<Card Title="@Name" Class="thick-border-inverse">
+<Card Title="@Name" Class="@Class">
     <section>
         <div class="sub-header">@Name scored an average of <span class="c-mp">@Average</span></div>
 
@@ -44,5 +44,7 @@
     public double Average { get; set; }
     [Parameter]
     public string[] StudentsNotUsed { get; set; }
+    [Parameter]
+    public string Class { get; set; }
 
 }

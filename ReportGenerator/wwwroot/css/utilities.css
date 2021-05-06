@@ -1,28 +1,29 @@
 ﻿
 
 .ml-38 {
-    margin-left:38px;
+    margin-left: 38px;
 }
 
 .c-mp {
-    color: mediumpurple;
+    color: var(--winner);
 }
 
 .grid {
-    display:flex;
+    display: flex;
 }
+
 .gap-10 {
     grid-gap: 10px;
 }
+
 .flex-h-center {
     display: flex;
     justify-content: center;
 }
 
-.thick-border {
-    border: 14px solid;
+.center-text {
+    display: flex;
+    text-align: center;
 }
 
-    .thick-border-inverse {
-        border: 14px solid rgba(0,0,0,.03);
-    }
+

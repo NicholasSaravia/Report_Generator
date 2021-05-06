@@ -74,6 +74,10 @@ namespace ReportGenerator.Pages
 
         }
 
+        private string IsWinner(double average)
+        {
+            return average == HighestPerformingCLass.ClassAverage ? "report-layout__winner-card " : "thick-border-inverse";
+        }
 
     }
 }
