@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorDownloadFile;
 using MudBlazor.Services;
 using Radzen;
 
@@ -26,6 +27,8 @@ namespace ReportGenerator
             builder.Services.AddScoped<NotificationService>();
             builder.Services.AddScoped<TooltipService>();
             builder.Services.AddScoped<ContextMenuService>();
+            builder.Services.AddBlazorDownloadFile();
+
 
             await builder.Build().RunAsync();
         }

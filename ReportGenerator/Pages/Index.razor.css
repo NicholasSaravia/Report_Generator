@@ -1,7 +1,7 @@
 ﻿.report-layout {
     display: grid;
     grid-template-rows: 40px 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 60px;
 }
 
 .report-layout__upload {

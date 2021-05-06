@@ -20,5 +20,6 @@ namespace ReportGenerator.Models
         public int StudentsWithinClass => Scores.Count();
         public int StudentsUsedToCalculateReport => Scores?.Where(x => x.GradeUsable).Count() ?? 0;
         public string[] NameOfStudentsNotUsedOnTest => Scores.Where(x => !x.GradeUsable).Select(y => y.StudentName).ToArray();
+
     }
 }
