@@ -1,13 +1,12 @@
 ﻿
 .report-layout {
     display: grid;
-    grid-template-rows: 40px auto 1fr 1fr;
+    grid-template-rows: 40px auto 1fr auto 40px;
     grid-gap: 60px;
 }
 
 .report-layout__upload {
-    display: flex;
-    justify-content: center;
+
 }
 
 .report-layout__classes {

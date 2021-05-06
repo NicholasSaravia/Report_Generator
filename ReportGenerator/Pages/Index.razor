@@ -1,15 +1,18 @@
 ﻿@page "/"
 
 <section class="report-layout">
-    <section class="report-layout__upload">
+
+    <section class="report-layout__upload flex-h-center">
         <Upload UploadText="Upload Files" Submit="ParseData"></Upload>
     </section>
+
     <section class="report-layout__winner flex-h-center">
-             @if (ClassRooms.Any() && ClassRooms.Count() > 1)
-             {
-                 <h1 class="center-text">@HighestPerformingCLass.Name had the highest class average!!</h1>
-             }
+        @if (ClassRooms.Any() && ClassRooms.Count() > 1)
+        {
+            <h1 class="center-text">@HighestPerformingCLass.Name had the highest class average!!</h1>
+        }
     </section>
+
     <section class="report-layout__classes">
         @foreach (var c in ClassRooms.OrderByDescending(x => x.ClassAverage))
         {
@@ -17,12 +20,15 @@
                        Average="@c.ClassAverage"
                        StudentsNotUsed="@c.NameOfStudentsNotUsedOnTest"
                        Ratio="(c.StudentsUsedToCalculateReport, c.StudentsWithinClass)"
-                       Class="@IsWinner(c.ClassAverage)"
-                       ></ClassRoom>
+                       Class="@IsWinner(c.ClassAverage)"></ClassRoom>
         }
     </section>
-    <section class="report-layout__export">
-        <MudButton OnClick="ExportToTextFile">Export</MudButton>
+
+    <section class="report-layout__export flex-h-center">
+        @if (ClassRooms.Any())
+        {
+            <MudButton Variant="Variant.Filled" OnClick="ExportToTextFile">Export</MudButton>
+        }
     </section>
 </section>
 
