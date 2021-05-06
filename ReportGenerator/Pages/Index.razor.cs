@@ -18,6 +18,7 @@ namespace ReportGenerator.Pages
         public List<ClassRoom> ClassRooms = new List<ClassRoom>();
         public ClassRoom HighestPerformingCLass => ClassRooms.OrderByDescending(x => x.ClassAverage).ToList()[0];
         [Inject] IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
+        public List<Score> ClassScores = new List<Score>();
 
 
         private async void ParseData(InputFileChangeEventArgs e)
@@ -36,7 +37,7 @@ namespace ReportGenerator.Pages
             this.StateHasChanged();
         }
 
-        private async void ExportToTextFile()
+        private async void SaveToTextFile()
         {
             await using var memoryStream = new MemoryStream();
             await using StreamWriter sw = new StreamWriter(memoryStream);
@@ -73,11 +74,17 @@ namespace ReportGenerator.Pages
                 contentType: "text/plain");
 
         }
-
+        
         private string IsWinner(double average)
         {
             return average == HighestPerformingCLass.ClassAverage ? "report-layout__winner-card " : "thick-border-inverse";
         }
 
+        private void ShowClassScores(ClassRoom classRoom)
+        {
+            ClassScores = classRoom.Scores.OrderBy(x => x.Grade).ToList();
+            this.StateHasChanged();
+            Js.InvokeVoidAsync("ScrollToScores");
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿<div class="card @Class">
+﻿
+<div class="card @Class" @onclick="OnClick">
     <section class="card__header">
         @Title
     </section>
@@ -16,4 +17,7 @@
 
     [Parameter]
     public string Class { get; set; } 
+    [Parameter]
+
+    public Action OnClick { get; set; }
 }

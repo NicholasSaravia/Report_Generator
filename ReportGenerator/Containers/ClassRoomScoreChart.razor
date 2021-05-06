@@ -1,0 +1,21 @@
+﻿@using ReportGenerator.Models
+
+@*
+    TODO
+    Convert this dank into a reusable component using an interface
+    and use a different line chart 
+*@
+<RadzenChart>
+    <RadzenBarSeries Data="@Scores" CategoryProperty="StudentName" Title="2020" LineType="LineType.Dashed" ValueProperty="GradeRounded" />
+    <RadzenValueAxis>
+        <RadzenGridLines Visible="true" />
+        <RadzenAxisTitle Text="Grades" />
+    </RadzenValueAxis>
+    <RadzenBarOptions Radius="5" />
+</RadzenChart>
+
+@code {
+
+    [Parameter]
+    public IEnumerable<Score> Scores { get; set; }
+}

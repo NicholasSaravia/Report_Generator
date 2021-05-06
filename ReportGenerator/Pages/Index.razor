@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IJSRuntime Js;
 
 <section class="report-layout">
 
@@ -13,23 +14,38 @@
         }
     </section>
 
-    <section class="report-layout__classes">
-        @foreach (var c in ClassRooms.OrderByDescending(x => x.ClassAverage))
-        {
-            <ClassRoom Name="@c.Name"
-                       Average="@c.ClassAverage"
-                       StudentsNotUsed="@c.NameOfStudentsNotUsedOnTest"
-                       Ratio="(c.StudentsUsedToCalculateReport, c.StudentsWithinClass)"
-                       Class="@IsWinner(c.ClassAverage)"></ClassRoom>
-        }
-    </section>
-
     <section class="report-layout__export flex-h-center">
         @if (ClassRooms.Any())
         {
-            <MudButton Variant="Variant.Filled" OnClick="ExportToTextFile">Export</MudButton>
+            <MudButton OnClick="SaveToTextFile" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Save" Color="Color.Info" Size="Size.Medium">Save</MudButton>
         }
     </section>
+
+    <section class="report-layout__classes">
+        @foreach (var c in ClassRooms.OrderByDescending(x => x.ClassAverage))
+        {
+            <MudTooltip Text="Click to see more details" Placement="Placement.Top">
+                <ClassRoom Name="@c.Name"
+                           Average="@c.ClassAverage"
+                           StudentsNotUsed="@c.NameOfStudentsNotUsedOnTest"
+                           Ratio="(c.StudentsUsedToCalculateReport, c.StudentsWithinClass)"
+                           Class="@IsWinner(c.ClassAverage)"
+                           OnClick="@(() => ShowClassScores(c))">
+                </ClassRoom>
+            </MudTooltip>
+
+        }
+    </section>
+
+    <section class="report-layout__class-scores">
+        @if (ClassScores.Any())
+        {
+            <ClassRoomScoreChart Scores="ClassScores"></ClassRoomScoreChart>
+        }
+    </section>
+
+    <div id="end"></div>
+
 </section>
 
 
