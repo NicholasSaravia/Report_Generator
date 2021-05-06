@@ -1,53 +1,22 @@
 ﻿@page "/"
-@using ReportGenerator.Models
-@inject IJSRuntime JSRuntime
-@inject NavigationManager NavManager;
 
 <section class="report-layout">
     <section class="report-layout__upload">
         <Upload UploadText="Upload Files" Submit="ParseData"></Upload>
     </section>
     <section class="report-layout__classes">
-        @foreach (var classRoom in ClassRooms.OrderByDescending(x => x.ClassAverage))
+
+
+        @foreach (var c in ClassRooms.OrderByDescending(x => x.ClassAverage))
         {
-            <Card Title="@classRoom.Name" Class="thick-border-inverse">
-                <section>
-                    <div class="sub-header">@classRoom.Name scored an average of <span class="c-mp">@classRoom.ClassAverage</span></div>
-
-                    <div class="grid gap-10">
-                        <div>A.</div>
-                        <div>
-                            @classRoom.StudentsUsedToCalculateReport/@classRoom.StudentsWithinClass students where used to calculate this report
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <Gauge Value="@classRoom.ClassAverage"></Gauge>
-                </section>
-                <section>
-                    @if (classRoom.NameOfStudentsNotUsedOnTest.Any())
-                    {
-                        <div>
-                            <div class="grid gap-10">
-                                <div>B.</div>
-                                <div>
-                                    Students discarded from consideration
-                                </div>
-                            </div>
-                            <ol class="ml-38">
-                                @foreach (var student in classRoom.NameOfStudentsNotUsedOnTest)
-                                {
-                                    <li>@student</li>
-                                }
-                            </ol>
-                        </div>
-                    }
-                </section>
-
-            </Card>
+            <ClassRoom Name="@c.Name"
+                       Average="@c.ClassAverage"
+                       StudentsNotUsed="@c.NameOfStudentsNotUsedOnTest"
+                       Ratio="(c.StudentsUsedToCalculateReport, c.StudentsWithinClass)"
+                       ></ClassRoom>
         }
     </section>
     <section class="report-layout__export">
-        <MudButton OnClick="@ExportToTextFile">Export</MudButton>
+        <MudButton OnClick="ExportToTextFile">Export</MudButton>
     </section>
 </section>

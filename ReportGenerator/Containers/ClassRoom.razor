@@ -1,0 +1,48 @@
+﻿
+<Card Title="@Name" Class="thick-border-inverse">
+    <section>
+        <div class="sub-header">@Name scored an average of <span class="c-mp">@Average</span></div>
+
+        <div class="grid gap-10">
+            <div>A.</div>
+            <div>
+                @Ratio.left/@Ratio.right students where used to calculate this report
+            </div>
+        </div>
+    </section>
+    <section>
+        <Gauge Value="@Average"></Gauge>
+    </section>
+    <section>
+        @if (StudentsNotUsed.Any())
+        {
+            <div>
+                <div class="grid gap-10">
+                    <div>B.</div>
+                    <div>
+                        Students discarded from consideration
+                    </div>
+                </div>
+                <ol class="ml-38">
+                    @foreach (var student in StudentsNotUsed)
+                    {
+                        <li>@student</li>
+                    }
+                </ol>
+            </div>
+        }
+    </section>
+
+</Card>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public (int left, int right) Ratio { get; set; }
+    [Parameter]
+    public double Average { get; set; }
+    [Parameter]
+    public string[] StudentsNotUsed { get; set; }
+
+}
