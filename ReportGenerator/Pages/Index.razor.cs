@@ -19,6 +19,7 @@ namespace ReportGenerator.Pages
         public ClassRoom HighestPerformingCLass => ClassRooms.OrderByDescending(x => x.ClassAverage).ToList()[0];
         [Inject] IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
         public List<Score> ClassScores = new List<Score>();
+        public ClassRoom SelectedClass;
 
 
         private async void ParseData(InputFileChangeEventArgs e)
@@ -83,6 +84,7 @@ namespace ReportGenerator.Pages
         private void ShowClassScores(ClassRoom classRoom)
         {
             ClassScores = classRoom.Scores.OrderBy(x => x.Grade).ToList();
+            SelectedClass = classRoom;
             this.StateHasChanged();
             Js.InvokeVoidAsync("ScrollToScores");
         }
