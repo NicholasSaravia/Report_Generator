@@ -24,6 +24,13 @@ namespace ReportGenerator.Pages
 
         private async void ParseData(InputFileChangeEventArgs e)
         {
+            if (ClassRooms.Any())
+            {
+                ClassRooms = new List<ClassRoom>();
+                ClassScores = new List<Score>();
+                this.StateHasChanged();
+            }
+
             // add readonly files to a list
             foreach (var file in e.GetMultipleFiles())
             {
